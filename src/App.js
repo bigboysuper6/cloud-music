@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import NavBar from "./components/navBar";
+import FoundMusic from "./components/foundMusic";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        width: "100%",
+        backgroundColor: "rgb(37,37,37)",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        style={{
+          flexWrap: "wrap",
+          display: "flex",
+          justifyContent: "center",
+          width: "61rem",
+          margin: "0.625rem",
+        }}
+      >
+        <NavBar />
+        <FoundMusic />
+      </div>
     </div>
   );
 }
