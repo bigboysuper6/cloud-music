@@ -5,6 +5,8 @@ import { CardActionArea } from "@mui/material";
 import Box from "@mui/material/Box";
 import { CardContent } from "@mui/material";
 import { Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+
 export default function MusicCard(props) {
   return (
     <Box
@@ -21,14 +23,16 @@ export default function MusicCard(props) {
           boxShadow: "0px 0px 0.625rem rgb(20,20,20)",
         }}
       >
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            width="100%"
-            image={props.list.picUrl}
-            alt="green iguana"
-          />
-        </CardActionArea>
+        <Link to={`/songlist/${props.list.id}`}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              width="100%"
+              image={props.list.picUrl}
+              alt="green iguana"
+            />
+          </CardActionArea>
+        </Link>
       </Card>
       <CardContent sx={{ padding: 0 }}>
         <Typography

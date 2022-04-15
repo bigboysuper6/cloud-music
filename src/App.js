@@ -1,6 +1,7 @@
 import "./App.css";
 import NavBar from "./components/navBar";
-import FoundMusic from "./components/foundMusic";
+import FoundMusic from "./routes/foundMusic";
+import { Outlet } from "react-router-dom";
 function App() {
   return (
     <div
@@ -21,7 +22,7 @@ function App() {
         }}
       >
         <NavBar />
-        <FoundMusic />
+        <Outlet />
       </div>
     </div>
   );

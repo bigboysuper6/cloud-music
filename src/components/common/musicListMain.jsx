@@ -3,7 +3,16 @@ import { Typography } from "@mui/material";
 import { IconButton } from "@mui/material";
 import { Favorite, Layers } from "@mui/icons-material";
 import { Link } from "@mui/material";
-import "../../css/musiclist.css";
+
+const Container = styled.div`
+  width: 100%;
+  border-radius: 0.625rem;
+  display: flex;
+  justify-content: space-evenly;
+  &:hover {
+    background-color: rgb(50, 50, 50);
+  }
+`;
 
 const ContainerLeft = styled.div`
   margin: 0.31rem 0;
@@ -18,6 +27,7 @@ const ImageMusic = styled.img`
   border-radius: 0.625rem;
   margin: 0px 5% 0px 0.5rem;
 `;
+
 const MusicInformation = styled.div`
   margin: 0;
 `;
@@ -55,8 +65,8 @@ const MusicList = (props) => {
   };
 
   return (
-    <div class="Container">
-      <ContainerLeft onMouseEnter={{ backgroud: "rgb(50,50,50)" }}>
+    <Container>
+      <ContainerLeft>
         <ImageMusic src={props.songslist.al.picUrl} />
         <MusicInformation>
           <Typography
@@ -84,9 +94,9 @@ const MusicList = (props) => {
           >
             {props.songslist.ar.map((item, index) =>
               index === props.songslist.ar.length - 1 ? (
-                <Link>{item.name}</Link>
+                <Link key={index}>{item.name}</Link>
               ) : (
-                <span>
+                <span key={index}>
                   <Link>{item.name}</Link>
                   <span
                     style={{
@@ -139,7 +149,7 @@ const MusicList = (props) => {
           {timeChange()}
         </Typography>
       </ContainerEnd>
-    </div>
+    </Container>
   );
 };
 

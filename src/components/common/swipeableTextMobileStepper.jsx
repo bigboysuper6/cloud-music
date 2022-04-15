@@ -75,7 +75,6 @@ const SwipeableTextMobileStepper = (props) => {
                 src={step.imageUrl}
                 alt="轮播图图片"
               />
-              )
             </div>
           ))}
         </AutoPlaySwipeableViews>

@@ -1,6 +1,6 @@
 import React from "react";
 import requestService from "../services/requestService";
-import MusicCard from "./common/card";
+import MusicCard from "./common/musicCard";
 import { Box } from "@mui/material";
 const RecommendPlaylist = (props) => {
   const [list, setList] = React.useState([]);
