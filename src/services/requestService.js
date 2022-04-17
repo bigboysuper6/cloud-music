@@ -15,8 +15,15 @@ function getmusiclist(id) {
   return http.get(musiclistUrl + `?id=${id}`);
 }
 
+//获取歌单动态信息,如播放数等.
+const playlistdetailurl = rootUrl + "/playlist/detail";
+function getplaylistdetail(id) {
+  return http.get(playlistdetailurl + `?id=${id}`);
+}
+
 export default {
   getCarousel,
   getrecommendplaylist,
   getmusiclist,
+  getplaylistdetail,
 };

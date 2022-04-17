@@ -18,7 +18,7 @@ const SwipeableTextMobileStepper = (props) => {
 
   async function getImage() {
     const { data } = await request.getCarousel();
-    console.log(data.banners);
+    console.log("轮播图", data.banners);
     setImages(data.banners);
   }
 

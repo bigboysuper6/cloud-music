@@ -1,9 +1,11 @@
 import PlayListDetails from "./../components/playListDetails";
 import React from "react";
+import PlayListHeader from "../components/playListHeader";
 const SongList = (props) => {
   return (
     <React.Fragment>
-      <PlayListDetails />;
+      <PlayListHeader />
+      <PlayListDetails />
     </React.Fragment>
   );
 };

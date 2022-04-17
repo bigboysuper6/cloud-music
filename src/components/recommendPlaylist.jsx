@@ -10,7 +10,7 @@ const RecommendPlaylist = (props) => {
 
   async function getList() {
     const { data } = await requestService.getrecommendplaylist();
-    console.log(data.result);
+    console.log("推荐的十个歌单", data);
     data.result.splice(1, 1);
     setList(data.result);
   }

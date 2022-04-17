@@ -5,15 +5,17 @@ import { Box } from "@mui/material";
 import { matchPath, useLocation } from "react-router-dom";
 const PlayListDetails = (props) => {
   const location = useLocation();
-  const [id, setId] = React.useState("3227063101");
+  const match = matchPath({ path: "/songlist/:id" }, location.pathname);
+  let { id: list_id } = match.params;
+  const [id, setId] = React.useState(list_id);
   const [musiclist, setMusicList] = React.useState([]);
   React.useEffect(() => {
     getMusicList();
   }, []);
   async function getMusicList() {
     const { data } = await requestService.getmusiclist(id);
+    console.log("歌单所有音乐信息", data);
     setMusicList(data.songs);
-    console.log(musiclist);
   }
   return (
     <Box>

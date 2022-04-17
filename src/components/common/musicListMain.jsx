@@ -5,26 +5,28 @@ import { Favorite, Layers } from "@mui/icons-material";
 import { Link } from "@mui/material";
 
 const Container = styled.div`
-  width: 100%;
+  min-height: 80px;
+  width: 976px;
   border-radius: 0.625rem;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   &:hover {
     background-color: rgb(50, 50, 50);
   }
 `;
 
 const ContainerLeft = styled.div`
-  margin: 0.31rem 0;
-  width: 33%;
+  width: 30%;
   display: flex;
   align-items: center;
+
   border-radius: 0.625rem;
 `;
 
 const ImageMusic = styled.img`
-  width: 20%;
-  border-radius: 0.625rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
   margin: 0px 5% 0px 0.5rem;
 `;
 
@@ -33,8 +35,6 @@ const MusicInformation = styled.div`
 `;
 
 const ContainerMid = styled.div`
-  margin: 0.31rem 0;
-  width: 33%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,8 +42,7 @@ const ContainerMid = styled.div`
 `;
 
 const ContainerEnd = styled.div`
-  margin: 0.31rem 0;
-  width: 33%;
+  width: 10%;
   display: flex;
   align-items: center;
   justify-content: end;

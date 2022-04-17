@@ -17,6 +17,8 @@ const NavBar = (props) => {
       <AppBar
         position="static"
         sx={{
+          width: "976px",
+          height: "70px",
           backgroundColor: "rgb(45,45,45)",
           boxShadow: "0px 0px 0.625rem rgb(20,20,20)",
           border: "0.06rem solid rgb(45,45,45)",
@@ -29,9 +31,7 @@ const NavBar = (props) => {
               href="www.baidu,com"
               sx={{ color: "rgb(250,250,250)" }}
               underline="none"
-            >
-              Music
-            </Link>
+            ></Link>
           </Typography>
         </Container>
       </AppBar>

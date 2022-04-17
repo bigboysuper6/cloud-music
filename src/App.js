@@ -1,6 +1,5 @@
 import "./App.css";
 import NavBar from "./components/navBar";
-import FoundMusic from "./routes/foundMusic";
 import { Outlet } from "react-router-dom";
 function App() {
   return (
@@ -17,7 +16,7 @@ function App() {
           flexWrap: "wrap",
           display: "flex",
           justifyContent: "center",
-          width: "61rem",
+          width: "976px",
           margin: "0.625rem",
         }}
       >
