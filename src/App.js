@@ -1,27 +1,31 @@
 import "./App.css";
 import NavBar from "./components/navBar";
 import { Outlet } from "react-router-dom";
+import { Box } from "@mui/system";
+import MusicBar from "./components/musicBar";
+
 function App() {
   return (
-    <div
-      style={{
-        width: "100%",
-        backgroundColor: "rgb(37,37,37)",
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
+    <div>
       <div
         style={{
-          flexWrap: "wrap",
+          width: "100%",
+          backgroundColor: "rgb(37,37,37)",
           display: "flex",
           justifyContent: "center",
-          width: "976px",
-          margin: "0.625rem",
         }}
       >
-        <NavBar />
-        <Outlet />
+        <div
+          style={{
+            flexWrap: "wrap",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <NavBar />
+          <Outlet test="test" />
+          <MusicBar />
+        </div>
       </div>
     </div>
   );

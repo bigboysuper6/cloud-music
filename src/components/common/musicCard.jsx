@@ -18,9 +18,9 @@ export default function MusicCard(props) {
     >
       <Card
         sx={{
+          backgroundColor: "rgb(37,37,37)",
           maxWidth: "100%",
           borderRadius: "0.625rem",
-          boxShadow: "0px 0px 0.625rem rgb(20,20,20)",
         }}
       >
         <Link to={`/songlist/${props.list.id}`}>

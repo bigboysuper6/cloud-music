@@ -8,11 +8,10 @@ import DialogContent from "@mui/material/DialogContent";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Typography from "@mui/material/Typography";
-
+import { useLocation } from "react-router-dom";
 const BootstrapDialog = styled(Dialog)(() => ({
   "& .MuiPaper-root": {
     borderRadius: "0.625rem",
-    boxShadow: "0px 0px 0.625rem rgb(20,20,20)",
   },
   "& .MuiDialogContent-root": {},
 }));
@@ -63,7 +62,7 @@ BootstrapDialogTitle.propTypes = {
 
 export default function Dialogs(props) {
   const [open, setOpen] = React.useState(false);
-
+  const location = useLocation();
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -73,7 +72,12 @@ export default function Dialogs(props) {
 
   return (
     <div>
-      <PEllipis onClick={handleClickOpen}>简介:{props.description}</PEllipis>
+      <PEllipis onClick={handleClickOpen}>
+        简介:
+        {location.pathname !== "/daysongs"
+          ? props.description
+          : "根据你的音乐口味生成,每天6:00更新"}
+      </PEllipis>
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
@@ -86,7 +90,11 @@ export default function Dialogs(props) {
           简介
         </BootstrapDialogTitle>
         <DialogContent dividers>
-          <Typography>{props.description}</Typography>
+          <Typography>
+            {location.pathname !== "/daysongs"
+              ? props.description
+              : "根据你的音乐口味生成,每天6:00更新"}
+          </Typography>
         </DialogContent>
       </BootstrapDialog>
     </div>

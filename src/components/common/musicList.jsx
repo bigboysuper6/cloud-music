@@ -3,6 +3,18 @@ import { Typography } from "@mui/material";
 import { IconButton } from "@mui/material";
 import { Favorite, Layers } from "@mui/icons-material";
 import { Link } from "@mui/material";
+import requestService from "../../services/requestService";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setMusicIndex,
+  changeMusicData,
+  setMusicStatusTrue,
+} from "../../features/music/playMusicSlice";
+import {
+  setplayListMusic,
+  incrementByAmount,
+} from "../../features/music/playListSlice";
+import store from "../../app/store";
 
 const Container = styled.div`
   min-height: 80px;
@@ -49,6 +61,8 @@ const ContainerEnd = styled.div`
 `;
 
 const MusicList = (props) => {
+  const songlist = useSelector((state) => state.songlistmusic.value);
+  const dispatch = useDispatch();
   const timeChange = () => {
     let time = props.songslist.dt;
     let minutes = parseInt(time / (60 * 1000));
@@ -63,8 +77,27 @@ const MusicList = (props) => {
     return time_ms;
   };
 
+  function playMusic() {
+    const MusicData = {
+      picUrl: props.songslist.al.picUrl,
+      id: props.songslist.id,
+      auth: props.songslist.ar,
+      name: props.songslist.name,
+    };
+    dispatch(changeMusicData(MusicData));
+    dispatch(setMusicStatusTrue());
+    dispatch(setplayListMusic(songlist));
+    // const state = store.getState();
+    // console.log("store 最新状态", state);
+    // const playList = state.playlistmusic.value.payload.payload;
+    // console.log("最新播放列表", playList);
+    console.log("当前歌曲", props.songslist);
+    console.log("当前歌曲索引", props.index);
+    dispatch(setMusicIndex(props.index));
+  }
+
   return (
-    <Container>
+    <Container onDoubleClick={playMusic}>
       <ContainerLeft>
         <ImageMusic src={props.songslist.al.picUrl} />
         <MusicInformation>

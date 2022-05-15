@@ -6,17 +6,23 @@ import reportWebVitals from "./reportWebVitals";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import FoundMusic from "./routes/foundMusic";
 import SongList from "./routes/songlist";
+import store from "./app/store";
+import { Provider } from "react-redux";
+
 ReactDOM.render(
-  <React.Fragment>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<FoundMusic />}></Route>
-          <Route path="/songlist/:id" element={<SongList />}></Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  </React.Fragment>,
+  <Provider store={store}>
+    <React.Fragment>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<FoundMusic />}></Route>
+            <Route path="/songlist/:id" element={<SongList />}></Route>
+            <Route path="/daysongs" element={<SongList />}></Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </React.Fragment>
+  </Provider>,
   document.getElementById("root")
 );
 

@@ -17,7 +17,7 @@ const SwipeableTextMobileStepper = (props) => {
   }, []);
 
   async function getImage() {
-    const { data } = await request.getCarousel();
+    const { data } = await request.getcarousel();
     console.log("轮播图", data.banners);
     setImages(data.banners);
   }
@@ -50,7 +50,6 @@ const SwipeableTextMobileStepper = (props) => {
           onChangeIndex={handleStepChange}
           style={{
             borderRadius: "10px",
-            boxShadow: "0px 0px 10px rgb(20,20,20)",
           }}
           enableMouseEvents
         >

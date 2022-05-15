@@ -3,7 +3,13 @@ import SwipeableTextMobileStepper from "../components/common/swipeableTextMobile
 import RecommendPlaylist from "../components/recommendPlaylist";
 const FoundMusic = (props) => {
   return (
-    <div style={{ backgroundColor: "rgb(37,37,37" }}>
+    <div
+      style={{
+        width: "976px",
+        backgroundColor: "rgb(37,37,37)",
+        margin: "100px 0",
+      }}
+    >
       <SwipeableTextMobileStepper width="100%" />
       <RecommendPlaylist width="100%" />
     </div>

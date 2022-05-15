@@ -8,23 +8,31 @@ import { useLocation } from "react-router-dom";
 import { matchPath } from "react-router-dom";
 import requestService from "../services/requestService";
 import Dialogs from "./common/dialog";
+import { useSelector } from "react-redux";
 function PlayListHeader(props) {
   const location = useLocation();
-  const match = matchPath({ path: "/songlist/:id" }, location.pathname);
-  let { id } = match.params;
+  const daySongsState = useSelector((state) => state.datasongs.value);
+  console.log("location.pathname", location.pathname);
   const [playListDetail, setPlayListDetail] = useState({});
   const [authname, setAuthname] = useState("");
   useEffect(() => {
     getPlayListDetailData();
   }, []);
   async function getPlayListDetailData() {
-    const { data } = await requestService.getplaylistdetail(id);
-    const { playlist } = data;
-    const { nickname } = playlist.creator;
-    console.log("歌单详细信息", playlist);
-    console.log("创建者名字", nickname);
-    setPlayListDetail(data.playlist);
-    setAuthname(nickname);
+    if (location.pathname !== "/daysongs") {
+      const match = matchPath({ path: "/songlist/:id" }, location.pathname);
+      let { id } = match.params;
+      const { data } = await requestService.getplaylistdetail(id);
+      const { playlist } = data;
+      const { nickname } = playlist.creator;
+      console.log("歌单详细信息", playlist);
+      console.log("创建者名字", nickname);
+      setPlayListDetail(data.playlist);
+      setAuthname(nickname);
+    } else {
+      setPlayListDetail(false);
+      setAuthname(false);
+    }
   }
   function getTime(createtime) {
     let time = new Date(createtime);
@@ -51,7 +59,6 @@ function PlayListHeader(props) {
   const ImagePlayList = styled.img`
     width: 290px;
     border-radius: 0.625rem;
-    box-shadow: 0px 0px 0.625rem rgb(20, 20, 20);
   `;
   const ContentPlayList = styled.div`
     display: flex;
@@ -63,7 +70,18 @@ function PlayListHeader(props) {
   return (
     <div>
       <HeaderFlex>
-        <ImagePlayList src={playListDetail.coverImgUrl}></ImagePlayList>
+        {location.pathname === "/daysongs" && daySongsState && (
+          <ImagePlayList
+            src={
+              location.pathname !== "/daysongs"
+                ? playListDetail.coverImgUrl
+                : daySongsState.payload.dailySongs[0].al.picUrl
+            }
+          ></ImagePlayList>
+        )}
+        {location.pathname !== "/daysongs" && (
+          <ImagePlayList src={playListDetail.coverImgUrl}></ImagePlayList>
+        )}
         <ContentPlayList>
           <Typography
             sx={{
@@ -76,34 +94,38 @@ function PlayListHeader(props) {
             variant="h1"
             component="h1"
           >
-            {playListDetail.name}
+            {location.pathname !== "/daysongs"
+              ? playListDetail.name
+              : "每日歌曲推荐"}
           </Typography>
-          <div>
-            <Typography
-              gutterBottom
-              sx={{
-                padding: 0,
-                margin: 0,
-                fontSize: "1rem",
-                fontWeight: "bold",
-                color: "rgb(180,180,180)",
-              }}
-            >
-              {authname} {getTime(playListDetail.createTime)}创建
-            </Typography>
-            <Typography
-              gutterBottom
-              sx={{
-                padding: 0,
-                margin: 0,
-                fontSize: "13px",
-                color: "rgb(180,180,180)",
-              }}
-            >
-              播放量:{getCount(playListDetail.playCount)} 最近一次更新于
-              {getTime(playListDetail.updateTime)}
-            </Typography>
-          </div>
+          {location.pathname !== "/daysongs" && (
+            <div>
+              <Typography
+                gutterBottom
+                sx={{
+                  padding: 0,
+                  margin: 0,
+                  fontSize: "1rem",
+                  fontWeight: "bold",
+                  color: "rgb(180,180,180)",
+                }}
+              >
+                {authname} {getTime(playListDetail.createTime)}创建
+              </Typography>
+              <Typography
+                gutterBottom
+                sx={{
+                  padding: 0,
+                  margin: 0,
+                  fontSize: "13px",
+                  color: "rgb(180,180,180)",
+                }}
+              >
+                播放量:{getCount(playListDetail.playCount)} 最近一次更新于
+                {getTime(playListDetail.updateTime)}
+              </Typography>
+            </div>
+          )}
 
           <Dialogs description={playListDetail.description} />
           <Button
@@ -111,7 +133,6 @@ function PlayListHeader(props) {
               height: "40px",
               width: "100px",
               borderRadius: "0.625rem",
-              boxShadow: "0px 0px 0.625rem rgb(20, 20, 20)",
             }}
             variant="contained"
             startIcon={<PlayArrowSharpIcon />}

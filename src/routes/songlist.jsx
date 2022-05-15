@@ -3,10 +3,10 @@ import React from "react";
 import PlayListHeader from "../components/playListHeader";
 const SongList = (props) => {
   return (
-    <React.Fragment>
+    <div style={{ margin: "90px 0", backgroundColor: "rgb(37,37,37)" }}>
       <PlayListHeader />
       <PlayListDetails />
-    </React.Fragment>
+    </div>
   );
 };
 
