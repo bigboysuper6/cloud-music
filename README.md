@@ -51,3 +51,5 @@ npm start
 ![](https://github.com/bigboysuper6/cloud-music/blob/main/readmeImage/%E6%88%AA%E5%B1%8F2022-05-19%20%E4%B8%8A%E5%8D%8810.41.40.png)
 
 ![](https://github.com/bigboysuper6/cloud-music/blob/main/readmeImage/%E6%88%AA%E5%B1%8F2022-05-19%20%E4%B8%8A%E5%8D%8810.41.52.png)
+
+![](https://github.com/bigboysuper6/cloud-music/blob/main/readmeImage/%E6%88%AA%E5%B1%8F2022-05-19%20%E4%B8%8A%E5%8D%8811.09.32.png)
