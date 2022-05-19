@@ -28,8 +28,16 @@ const RecommendPlaylist = (props) => {
     } else {
       const { data: usrData } = await Usr.getUsrRecommendplaylist(cookie);
       console.log("每日推荐歌单:", usrData.recommend);
-      const daysongs = usrData.recommend.slice(0, 8);
-      console.log("裁剪为 8 首", daysongs);
+      let daysongs;
+      if (usrData.recommend.length > 8) {
+        daysongs = usrData.recommend.slice(0, 8);
+        console.log("裁剪为 8 首", daysongs);
+      } else if (usrData.recommend.length < 8) {
+        const { data } = await requestService.getrecommendplaylist(1);
+        console.log("获取一个推荐歌单", data.result);
+        daysongs = [...usrData.recommend, ...data.result];
+        console.log("新获取的八首推荐", daysongs);
+      } else daysongs = usrData.recommend;
       setList(daysongs);
     }
   }
