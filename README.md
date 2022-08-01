@@ -29,6 +29,7 @@ React Hook、React Router 6、Material UI、React-Redux、Styled-Components
 + 等等
 
 该项目尚未完成,后续将会持续完善
+目前在对一些组件进行重构，包括采用 styled-component，规范组件目录，减少冗余代码等。进度请查看 restructure 分支
 
 运行项目:
 
